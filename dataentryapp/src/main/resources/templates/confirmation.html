@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Confirmation</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<h1>Submission Confirmed</h1>
+
+<p><strong>Name:</strong> <span th:text="${userEntry.name}"></span></p>
+<p><strong>Age:</strong> <span th:text="${userEntry.age}">N/A</span></p>
+<p><strong>Title:</strong> <span th:text="${userEntry.title}"></span></p>
+<p><strong>Hometown:</strong> <span th:text="${userEntry.hometown}">N/A</span></p>
+
+<h2>Previous Entries:</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Title</th>
+        <th>Hometown</th>
+    </tr>
+    <tr th:each="entry : ${userEntries}">
+        <td th:text="${entry.name}"></td>
+        <td th:text="${entry.age != null ? entry.age : 'N/A'}"></td>
+        <td th:text="${entry.title}"></td>
+        <td th:text="${entry.hometown != null ? entry.hometown : 'N/A'}"></td>
+    </tr>
+</table>
+
+<a href="/">Submit Another Entry</a>
+</body>
+</html>
